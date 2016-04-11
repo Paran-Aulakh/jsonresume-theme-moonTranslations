@@ -5,10 +5,11 @@ var Mustache = require('mustache');
 var d = new Date();
 var curyear = d.getFullYear();
 var language;
+var languageFile = "/lang.se.json";
 
 function getLanguage(){
   if (!language)
-    language = JSON.parse(fs.readFileSync(__dirname + "/lang.se.json", "utf-8"));
+    language = JSON.parse(fs.readFileSync(__dirname + languageFile, "utf-8"));
   return language;
 }
 
@@ -248,8 +249,6 @@ function render(resume) {
   }
 
   resume.language = getLanguage();
-
-  console.log(resume.language.basics);
 
   resume.css = fs.readFileSync(__dirname + "/style.css", "utf-8");
   resume.printcss = fs.readFileSync(__dirname + "/print.css", "utf-8");
